@@ -1,0 +1,20 @@
+pandoc: 3.1.8
+pkgdown: 2.0.7.9000
+pkgdown_sha: d5432a4e04655c6f9903196890f6bf166fbbd86b
+articles:
+  additional: additional.html
+  anovaES: anovaES.html
+  convert_p_OR_RR: convert_p_OR_RR.html
+  convert_r_d_OR: convert_r_d_OR.html
+  effectsize_API: effectsize_API.html
+  effectsize: effectsize.html
+  from_test_statistics: from_test_statistics.html
+  interpret: interpret.html
+  standardized_differences: standardized_differences.html
+  statistical_power: statistical_power.html
+  xtabs: xtabs.html
+last_built: 2023-10-24T17:40Z
+urls:
+  reference: https://easystats.github.io/effectsize/reference
+  article: https://easystats.github.io/effectsize/articles
+
