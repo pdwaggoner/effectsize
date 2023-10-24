@@ -328,8 +328,15 @@ applications. So, if you don’t want to track down a specific one, or are
 unaware of options, you can simply pass the statistical test object to
 <code><a href="../reference/effectsize.html">effectsize()</a></code>, and either select the <code>type</code>, or
 leave it blank for “cohens_d”, which is the default option.</p>
+<p><em>Note</em>, when using the formula interface to
+<code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test()</a></code>, this method (currently) only gives an approximate
+effect size. So for this first simple approach, we update our test
+(<code>t_alt</code>) and then make a call to
+<code><a href="../reference/effectsize.html">effectsize()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/effectsize.html">effectsize</a></span><span class="op">(</span><span class="va">t</span>, type <span class="op">=</span> <span class="st">"cohens_d"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">t_alt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span><span class="op">[</span><span class="va">mtcars</span><span class="op">$</span><span class="va">am</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span><span class="op">[</span><span class="va">mtcars</span><span class="op">$</span><span class="va">am</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/effectsize.html">effectsize</a></span><span class="op">(</span><span class="va">t_alt</span>, type <span class="op">=</span> <span class="st">"cohens_d"</span><span class="op">)</span></span></code></pre></div>
 <p><em>Note</em>, users can easily store the value and/or CIs as you’d
 like via, e.g.,
 <code>cohens_d &lt;- effectsize(t, type = "cohens_d")[1]</code>.</p>
@@ -345,8 +352,14 @@ picked Cohen’s <span class="math inline">\(d\)</span>, so we would call
 for options for standardized differences. Or see <a href="https://easystats.github.io/effectsize/reference/index.html#for-contingency-tables">here</a>
 for options for contingency tables. Or see <a href="https://easystats.github.io/effectsize/reference/index.html#comparing-multiple-groups">here</a>
 for options for comparing multiple groups, and so on.</p>
+<p>In our simple case here with a t-test, users are encouraged to use
+<code><a href="../reference/effectsize.html">effectsize()</a></code> when working with htest objects to ensure
+proper estimation. Therefore, with this second approach of using the
+“named” function, <code>cohens_d</code>, users should pass the data
+directly to the function instead of the htest object (e.g.,
+<code>cohens_d(t)</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/cohens_d.html">cohens_d</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cohens_d.html">cohens_d</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">am</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="approach-3-t_to_d">Approach 3: <code>t_to_d()</code><a class="anchor" aria-label="anchor" href="#approach-3-t_to_d"></a>
@@ -392,6 +405,10 @@ given that we have collected the essential ingredients.</p>
 described) can be passed to the first argument, <code>d</code>. This
 value can either be from a previously-stored effect size, or can be
 called directly as shown below.</p>
+<p>In line with prior caveats, since <code><a href="../reference/t_to_r.html">t_to_d()</a></code> is only an
+approximate effect size, best practice would be to properly compute
+Cohen’s d as suggested previously in approach 2 when the raw data are
+available.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html" class="external-link">pwr.t.test</a></span><span class="op">(</span></span>
 <span>  d <span class="op">=</span> <span class="fu"><a href="../reference/t_to_r.html">t_to_d</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">t</span><span class="op">$</span><span class="va">statistic</span>, df_error <span class="op">=</span> <span class="va">t</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span><span class="op">$</span><span class="va">d</span>,</span>
