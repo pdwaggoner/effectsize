@@ -15,10 +15,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><script src="../deps/bslib-component-js-0.5.1.9000/components.min.js"></script><script src="../deps/bslib-component-js-0.5.1.9000/web-components.min.js" type="module"></script><link href="../deps/bslib-component-css-0.5.1.9000/components.css" rel="stylesheet">
-<link href="../deps/Roboto-0.4.7/font.css" rel="stylesheet">
-<link href="../deps/JetBrains_Mono-0.4.7/font.css" rel="stylesheet">
-<link href="../deps/Roboto_Slab-0.4.7/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.8/font.css" rel="stylesheet">
+<link href="../deps/JetBrains_Mono-0.4.8/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Slab-0.4.8/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Statistical Power">
@@ -67,6 +66,7 @@
     <a class="dropdown-item" href="../articles/anovaES.html">ANOVA Effect Sizes</a>
     <a class="external-link dropdown-item" href="https://easystats.github.io/parameters/articles/standardize_parameters_effsize.html">Standardized Parameters</a>
     <a class="external-link dropdown-item" href="https://easystats.github.io/correlation/articles/index.html">Correlation Vignettes</a>
+    <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="../reference/effectsize_CIs.html">Confidence Intervals</a>
     <a class="dropdown-item" href="../articles/statistical_power.html">Statistical Power</a>
     <div class="dropdown-divider"></div>
@@ -155,31 +155,31 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>In this vignette, we focus on statistical power and the role of the
-<code>effectsize</code> easystats package in power analysis. As such, we
-are interested in accomplishing several things with this vignette:</p>
+<code>effectsize</code> <em>easystats</em> package in power analysis. As
+such, we are interested in accomplishing several things with this
+vignette:</p>
 <ol style="list-style-type: decimal">
 <li>Reviewing statistical power and its value in a research task</li>
 <li>Demonstrating the role of the <code>effectsize</code> package in the
 context of exploring statistical power</li>
 <li>Highlighting the ease of calculating and understanding of
-statistical power via the easystats ecosystem, and the
+statistical power via the <em>easystats</em> ecosystem, and the
 <code>effectsize</code> package specifically</li>
 <li>Encouraging wider adoption of power analysis in applied
 research</li>
 </ol>
 <p><em>Disclaimer:</em> This vignette is an initial look at power
-analysis via Easystats. There’s much more we could do, so please give us
-a feedback about what features would you like to see in Easystats to
-make power analysis easier.</p>
+analysis via <em>easystats</em>. There’s much more we could do, so
+please give us a feedback about what features would you like to see in
+<em>easystats</em> to make power analysis easier.</p>
 <div class="section level3">
 <h3 id="what-is-statistical-power-and-power-analysis">What is statistical power and power analysis?<a class="anchor" aria-label="anchor" href="#what-is-statistical-power-and-power-analysis"></a>
 </h3>
 <p>Statistical power allows for the ability to check whether an effect
 observed from a statistical test actually exists, or that the null
 hypothesis really can be rejected (or not). Power involves many related
-concepts including, but not limited to, sample size estimation,
-significance threshold evaluation, and of course, the <em>effect
-size</em>.</p>
+concepts including, but not limited to, sample size, estimation,
+significance threshold, and of course, the <em>effect size</em>.</p>
 </div>
 <div class="section level3">
 <h3 id="what-is-effectsize">What is <code>effectsize</code>?<a class="anchor" aria-label="anchor" href="#what-is-effectsize"></a>
@@ -254,8 +254,8 @@ trust the results you get from your test(s) downstream, and that your
 inferences are reliable.</p>
 <p>So this is where we focus in this vignette, and pay special attention
 to the ease and role of effect size calculation via the
-<code>effectsize</code> package from easystats. The following section
-walks through a simple applied example to ensure 1) the concepts
+<code>effectsize</code> package from <em>easystats</em>. The following
+section walks through a simple applied example to ensure 1) the concepts
 surrounding and involved in power are clear and digestible, and 2) that
 the role and value of the <code>effectsize</code> package are likewise
 clear and digestible. Understanding both of these realities will allow
@@ -264,13 +264,12 @@ problems and questions.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="an-applied-example">An Applied Example<a class="anchor" aria-label="anchor" href="#an-applied-example"></a>
+<h2 id="example-comparing-means-of-independant-samples">Example: Comparing Means of Independant Samples<a class="anchor" aria-label="anchor" href="#example-comparing-means-of-independant-samples"></a>
 </h2>
-<p>In addition to relying on the easystats <code>effectsize</code>
-package for effect size calculation, we will also leverage the simple,
-but excellent <code>pwr</code> package for the following implementation
-of power analysis <span class="citation">(Champely and Rosario
-2017)</span>.</p>
+<p>In addition to relying on the <em>easystats</em>
+<code>effectsize</code> package for effect size calculation, we will
+also leverage the simple, but excellent <code>pwr</code> package for the
+following implementation of power analysis <span class="citation">(Champely and Rosario 2017)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr" class="external-link">pwr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://easystats.github.io/effectsize/">effectsize</a></span><span class="op">)</span></span></code></pre></div>
@@ -282,13 +281,13 @@ explore mean MPG for both transmission groups (<code>AM</code>).</p>
 different contexts, and we encourage you to take a look and select the
 appropriate one for your application. For present purposes of
 calculating statistical power for our t-test, we will rely on the
-<code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html" class="external-link">pwr.t.test()</a></code> function. Here’s the basic anatomy:</p>
+<code><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html" class="external-link">pwr.t2n.test()</a></code> function. Here’s the basic anatomy:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html" class="external-link">pwr.t.test</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html" class="external-link">pwr.t2n.test</a></span><span class="op">(</span></span>
+<span>  n1 <span class="op">=</span> <span class="va">...</span>, n2 <span class="op">=</span> <span class="va">...</span>,</span>
 <span>  d <span class="op">=</span> <span class="va">...</span>,</span>
-<span>  n <span class="op">=</span> <span class="va">...</span>,</span>
 <span>  sig.level <span class="op">=</span> <span class="va">...</span>,</span>
-<span>  type <span class="op">=</span> <span class="va">...</span>,</span>
+<span>  power <span class="op">=</span> <span class="va">...</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>But, before we can get to the power part, we need to collect a few
@@ -298,24 +297,20 @@ include:</p>
 <li>
 <code>d</code>: effect size</li>
 <li>
-<code>n</code>: sample size (for each sample)</li>
+<code>n1</code> and <code>n2</code>: sample size (for each
+sample)</li>
 <li>
 <code>sig.level</code>: significance threshold (e.g.,
 <code>0.05</code>)</li>
 <li>
-<code>type</code>: type of t-test (e.g., one-sample, two-sample,
-paired)</li>
-<li>
 <code>alternative</code>: direction of the t-test (e.g., greater,
 lesser, two.sided)</li>
 </ul>
+<p>(By omitting the <code>power</code> argument, we are implying that we
+want the function to estimate that value for us.)</p>
 <div class="section level3">
 <h3 id="calculate-effect-size">Calculate Effect Size<a class="anchor" aria-label="anchor" href="#calculate-effect-size"></a>
 </h3>
-<p>All arguments in <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html" class="external-link">pwr.t.test()</a></code> can be supplied by the
-researcher, except <code>d</code>, which requires calculation of an
-effect size. This is where the <code>effectsize</code> package comes
-in.</p>
 <p>Given the simplicity of this example and the prevalence of Cohen’s
 <span class="math inline">\(d\)</span>, we will rely on this effect size
 index here. We have three ways of easily calculating Cohen’s <span class="math inline">\(d\)</span> via <code>effectsize</code>.</p>
@@ -339,7 +334,7 @@ effect size. So for this first simple approach, we update our test
 <span><span class="fu"><a href="../reference/effectsize.html">effectsize</a></span><span class="op">(</span><span class="va">t_alt</span>, type <span class="op">=</span> <span class="st">"cohens_d"</span><span class="op">)</span></span></code></pre></div>
 <p><em>Note</em>, users can easily store the value and/or CIs as you’d
 like via, e.g.,
-<code>cohens_d &lt;- effectsize(t, type = "cohens_d")[1]</code>.</p>
+<code>cohens_d &lt;- effectsize(t, type = "cohens_d")[[1]]</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="approach-2-cohens_d">Approach 2: <code>cohens_d()</code><a class="anchor" aria-label="anchor" href="#approach-2-cohens_d"></a>
@@ -353,19 +348,19 @@ for options for standardized differences. Or see <a href="https://easystats.gith
 for options for contingency tables. Or see <a href="https://easystats.github.io/effectsize/reference/index.html#comparing-multiple-groups">here</a>
 for options for comparing multiple groups, and so on.</p>
 <p>In our simple case here with a t-test, users are encouraged to use
-<code><a href="../reference/effectsize.html">effectsize()</a></code> when working with htest objects to ensure
-proper estimation. Therefore, with this second approach of using the
-“named” function, <code>cohens_d</code>, users should pass the data
-directly to the function instead of the htest object (e.g.,
-<code>cohens_d(t)</code>).</p>
+<code><a href="../reference/effectsize.html">effectsize()</a></code> when working with <code>htest</code> objects
+to ensure proper estimation. Therefore, with this second approach of
+using the “named” function, <code>cohens_d</code>, users should pass the
+data directly to the function instead of the <code>htest</code> object
+(e.g., <code>cohens_d(t)</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/cohens_d.html">cohens_d</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">am</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="approach-3-t_to_d">Approach 3: <code>t_to_d()</code><a class="anchor" aria-label="anchor" href="#approach-3-t_to_d"></a>
 </h4>
-<p>When/if the test object’s class is unclear, you may get a warning
-message like:</p>
+<p>When the original underlying data is not available, you may get a
+warning message like:</p>
 <blockquote>
 <p><em>Warning: … Returning an approximate effect size using
 t_to_d()</em></p>
@@ -380,9 +375,8 @@ this conversion “fail safe” in the architecture of
 <code>effectsize</code> by detecting the input and making the
 appropriate conversion. There are many conversions available in the
 package. Take a look <a href="https://easystats.github.io/effectsize/reference/index.html#effect-size-conversion">here</a>.</p>
-<p>So, for the third and final approach, and to double check that the
-conversion was correct, let’s directly pass our t-test results to
-<code><a href="../reference/t_to_r.html">t_to_d()</a></code>.</p>
+<p>This can also be dne directly by the user using the
+<code><a href="../reference/t_to_r.html">t_to_d()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/t_to_r.html">t_to_d</a></span><span class="op">(</span></span>
 <span>  t <span class="op">=</span> <span class="va">t</span><span class="op">$</span><span class="va">statistic</span>,</span>
@@ -391,8 +385,6 @@ conversion was correct, let’s directly pass our t-test results to
 <span><span class="co">#&gt; d     |         95% CI</span></span>
 <span><span class="co">#&gt; ----------------------</span></span>
 <span><span class="co">#&gt; -1.76 | [-2.82, -0.67]</span></span></code></pre></div>
-<p><em>Note</em>, this approach will drop the warning as it is now
-explicit that we are converting from a t-test to Cohen’s <span class="math inline">\(d\)</span>.</p>
 </div>
 </div>
 <div class="section level3">
@@ -401,32 +393,35 @@ explicit that we are converting from a t-test to Cohen’s <span class="math inl
 <p>Now we are ready to calculate the statistical power of our t-test
 given that we have collected the essential ingredients.</p>
 <p>For the present application, the effect size obtained from
-<code><a href="../reference/t_to_r.html">t_to_d()</a></code> (or any of the three approaches previously
-described) can be passed to the first argument, <code>d</code>. This
-value can either be from a previously-stored effect size, or can be
-called directly as shown below.</p>
-<p>In line with prior caveats, since <code><a href="../reference/t_to_r.html">t_to_d()</a></code> is only an
-approximate effect size, best practice would be to properly compute
-Cohen’s d as suggested previously in approach 2 when the raw data are
-available.</p>
+<code><a href="../reference/cohens_d.html">cohens_d()</a></code> (or any of the three approaches previously
+described) can be passed to the <code>d</code> argument.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html" class="external-link">pwr.t.test</a></span><span class="op">(</span></span>
-<span>  d <span class="op">=</span> <span class="fu"><a href="../reference/t_to_r.html">t_to_d</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">t</span><span class="op">$</span><span class="va">statistic</span>, df_error <span class="op">=</span> <span class="va">t</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span><span class="op">$</span><span class="va">d</span>,</span>
-<span>  n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">am</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cohens_d.html">cohens_d</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">am</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Cohen's d |         95% CI</span></span>
+<span><span class="co">#&gt; --------------------------</span></span>
+<span><span class="co">#&gt; -1.48     | [-2.27, -0.67]</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; - Estimated using pooled SD.</span></span>
+<span><span class="op">(</span><span class="va">Ns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">am</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  0  1 </span></span>
+<span><span class="co">#&gt; 19 13</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html" class="external-link">pwr.t2n.test</a></span><span class="op">(</span></span>
+<span>  n1 <span class="op">=</span> <span class="va">Ns</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n2 <span class="op">=</span> <span class="va">Ns</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  d <span class="op">=</span> <span class="va">result</span><span class="op">[[</span><span class="st">"Cohens_d"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;      Two-sample t test power calculation </span></span>
+<span><span class="co">#&gt;      t test power calculation </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;               n = 19, 13</span></span>
-<span><span class="co">#&gt;               d = 1.76</span></span>
+<span><span class="co">#&gt;              n1 = 19</span></span>
+<span><span class="co">#&gt;              n2 = 13</span></span>
+<span><span class="co">#&gt;               d = 1.478</span></span>
 <span><span class="co">#&gt;       sig.level = 0.05</span></span>
-<span><span class="co">#&gt;           power = 0.9995, 0.9904</span></span>
-<span><span class="co">#&gt;     alternative = two.sided</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span></code></pre></div>
+<span><span class="co">#&gt;           power = 0.9779</span></span>
+<span><span class="co">#&gt;     alternative = two.sided</span></span></code></pre></div>
 <p>The results tell us that we are sufficiently powered, with a very
 high power for each group, <code>0.999</code> and
 <code>0.990</code>.</p>
@@ -435,6 +430,18 @@ something very small, say <code>n = c(2, 2)</code>, then you would get a
 much lower power, suggesting that your sample size is too small to
 detect any reliable signal or to be able to trust your results.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="example-contingency-table">Example: Contingency Table<a class="anchor" aria-label="anchor" href="#example-contingency-table"></a>
+</h2>
+<!-- TODO -->
+<p><em>To be added.</em></p>
+</div>
+<div class="section level2">
+<h2 id="example-anova-and-model-comparisons">Example: ANOVA (and Model Comparisons)<a class="anchor" aria-label="anchor" href="#example-anova-and-model-comparisons"></a>
+</h2>
+<!-- TODO -->
+<p><em>To be added.</em></p>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
